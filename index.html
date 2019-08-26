@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8" /> 
+	<title>Lazypres</title>
+
+	<link rel="stylesheet" href="css/reset.css" />
+	<link rel="stylesheet" href="css/main.css" />
+
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+	<script src="js/index.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<header class="header">
+    	    <h1>Lazypres</h1>
+    	    <input type="file"
+    	    	   id="upload-input" name="upload-input"
+    	    	   multiple="true"
+    	    	   accept="video/*,image/*">
+
+    	    <div>
+    	    	<button id="prev-btn" type="button">Prev</button>
+    	    	<button id="next-btn" type="button">Next</button>
+    	    </div>
+
+		</header>
+
+
+        <div id="img-container" class="item">
+        	<img src="" id="presented-img" />
+        </div>
+ 
+        <div id="map" class="item"/>
+	</div>
+
+</body
+

@@ -1,0 +1,47 @@
+:root {
+	--gap: 10px;
+}
+
+body {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+#map {
+	grid-area: sidemap;
+
+	margin-right: var(--gap);
+	margin-bottom: var(--gap);
+}
+
+#img-container {
+	grid-area: main;
+	background-color: #ff0000;
+
+	margin-left: var(--gap);
+	margin-bottom: var(--gap);
+
+}
+
+#img-container > img {
+	height: auto;
+	width: 100%;
+}
+
+.header {
+	grid-area: header;
+}
+
+.container {
+	display: grid;
+	grid-gap: var(--gap);
+	height: 100vh;
+	justify-items: stretch;
+	grid-template-columns: 2fr 1fr;
+	grid-template-rows: 100px 1fr;
+	grid-template-areas:
+	"header header"
+	"main sidemap";
+}
+
