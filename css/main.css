@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Chilanka&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+
 :root {
 	--gap: 10px;
 }
@@ -6,42 +9,105 @@ body {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
+	background-color: #000000;
+	font-family: 'Livvic', sans-serif;
 }
 
-#map {
-	grid-area: sidemap;
-
-	margin-right: var(--gap);
-	margin-bottom: var(--gap);
-}
-
-#img-container {
-	grid-area: main;
-	background-color: #ff0000;
-
-	margin-left: var(--gap);
-	margin-bottom: var(--gap);
-
-}
-
-#img-container > img {
-	height: auto;
-	width: 100%;
+h1 {
+	font-size: 48px;
 }
 
 .header {
 	grid-area: header;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: row;
+	justify-items: center;
+	align-items: center;
+	box-shadow: 0 2px 4px #338000;
+	padding-bottom: var(--gap);
+	padding-left: var(--gap);
+}
+
+.header > h1 {
+	padding-right: 30px;
 }
 
 .container {
 	display: grid;
-	grid-gap: var(--gap);
 	height: 100vh;
 	justify-items: stretch;
 	grid-template-columns: 2fr 1fr;
-	grid-template-rows: 100px 1fr;
+	grid-template-rows: 60px 1fr;
 	grid-template-areas:
 	"header header"
 	"main sidemap";
+}
+
+#map {
+	grid-area: sidemap;
+}
+
+#img-container {
+	grid-area: main;
+
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	background-color: #2a2a2a;
+
+	position: relative;
+}
+
+#prev-btn {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+	height: 100%;
+}
+
+#next-btn {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 40px;
+	height: 100%;
+}
+
+.img-btn {
+	background-color: #ffffff;
+	opacity: 0;
+	display: grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.img-btn:hover {
+	cursor: pointer;
+}
+
+#img-container:hover .img-btn {
+	opacity: 0.3;
+}
+
+.arrow {
+	border: solid #a00000;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 3px;
+	opacity: 1;
+}
+
+.arrow-left {
+	transform: rotate(135deg);
+	-webkit-transform: rotate(135deg);
+}
+
+.arrow-right {
+	transform: rotate(-45deg);
+	-webkit-transform: rotate(-45deg);
 }
 

@@ -1,7 +1,7 @@
 let uploadInput;
 let presentation;
 let presentedIndex;
-let presentedImg;
+let imageContainer;
 let map;
 
 const selectedMarkerColor = '#ff3700'
@@ -35,7 +35,6 @@ window.onload = function setup() {
 function setupElements() {
 	uploadInput = document.getElementById("upload-input");
 	imageContainer = document.getElementById("img-container");
-	presentedImg = document.getElementById("presented-img");
 
 
 	map = L.map('map').setView([20.33, -13.37], 13);
@@ -111,6 +110,8 @@ function present() {
 
 	createPresentation(uploadInput.files).then((_presentation) => {
 		presentation = _presentation;
+		// reversing, because usually pictures are loaded from newest to oldest
+		presentation.reverse(); 
 
 		setFirstPhoto(presentation);
 		setFirstMarker(presentation);
@@ -131,8 +132,7 @@ function resetPresentation(presentation) {
 		}
 	}
 
-
-	presentedImg.setAttribute("src", "");
+	imageContainer.style.backgroundImage = "url('')";
 
 	presentation = undefined;
 	presentedIndex = -1;
@@ -161,7 +161,7 @@ function setFirstMarker(presentation) {
 }
 
 function setPhoto(file) {
-	presentedImg.setAttribute("src", URL.createObjectURL(file));
+	imageContainer.style.backgroundImage = `url('${URL.createObjectURL(file)}')`;
 }
 
 function plotLocations(imgFiles) {
@@ -244,5 +244,5 @@ function setMapView(map, markers) {
 
 	let markerGroup = new L.featureGroup(markers);
 
-	map.fitBounds(markerGroup.getBounds().pad(0.5));
+	map.fitBounds(markerGroup.getBounds());
 }
