@@ -27,6 +27,7 @@ h1 {
 	box-shadow: 0 2px 4px #338000;
 	padding-bottom: var(--gap);
 	padding-left: var(--gap);
+	margin-bottom: var(--gap);
 }
 
 .header > h1 {
@@ -46,6 +47,7 @@ h1 {
 
 #map {
 	grid-area: sidemap;
+	margin-left: var(--gap);
 }
 
 #img-container {
