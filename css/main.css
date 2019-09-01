@@ -53,12 +53,22 @@ h1 {
 #img-container {
 	grid-area: main;
 
+	display: grid;
+	justify-items: center;
+	align-items: center;
+
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: center;
 	background-color: #2a2a2a;
 
 	position: relative;
+}
+
+#img-container img {
+	object-fit: cover;
+	width: 100%;
+	height: auto;
 }
 
 #prev-btn {

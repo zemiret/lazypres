@@ -2,7 +2,15 @@ let uploadInput;
 let presentation;
 let presentedIndex;
 let imageContainer;
+let rotatedImageContainer;
 let map;
+
+
+// TODO: loadImage library seems to work but...
+// it's impossibly slow if it reads orientation on each photo, so
+// we can try to load them all beforehand. It will be ok if it's in reasonable
+// amount of time for... 500 pictures.
+
 
 const selectedMarkerColor = '#ff3700'
 
@@ -35,6 +43,7 @@ window.onload = function setup() {
 function setupElements() {
 	uploadInput = document.getElementById("upload-input");
 	imageContainer = document.getElementById("img-container");
+	rotatedImageContainer = document.getElementById("img-container").getElementsByTagName("img")[0]; 
 
 
 	map = L.map('map').setView([20.33, -13.37], 13);
@@ -124,8 +133,6 @@ function resetPresentation(presentation) {
 
 	let markers = presentation.map((pres) => pres.marker);
 
-	console.log(markers);
-
 	for (let marker of markers) {
 		if (markerNotNull(marker)) {
 			map.removeLayer(marker);
@@ -133,6 +140,7 @@ function resetPresentation(presentation) {
 	}
 
 	imageContainer.style.backgroundImage = "url('')";
+	rotatedImageContainer.src = "";
 
 	presentation = undefined;
 	presentedIndex = -1;
@@ -161,7 +169,27 @@ function setFirstMarker(presentation) {
 }
 
 function setPhoto(file) {
-	imageContainer.style.backgroundImage = `url('${URL.createObjectURL(file)}')`;
+//	const photoUrl = URL.createObjectURL(file);
+	imageContainer.style.backgroundImage = `url('${photoUrl}')`;
+	rotatedImageContainer.src = photoUrl; 
+
+//	const image = loadImage(photoUrl, (img, data) => {
+//	    imageContainer.style.backgroundImage = `url('${img.toDataURL()}')`;
+//	    rotatedImageContainer.src = photoUrl; 
+//	}, {
+//		orientation: true,
+//		canvas: false,
+//	});
+}
+
+function loadPhoto(file) {
+	return new Promise((resolve, reject) => {
+		const imgCanvas = loadImage(file, (img) => {
+			resolve(img.toDataURL());
+		}, {
+			orientation: true,
+		})
+	});
 }
 
 function plotLocations(imgFiles) {
@@ -190,13 +218,11 @@ function markerNotNull(marker) {
 }
 
 function locationFromFile(imgFile) {
-	let res = new Promise((resolve, reject) => {
+	return new Promise((resolve, reject) => {
 	    EXIF.getData(imgFile, function() {
 	    	resolve(getLatLon(this.exifdata));
 		});
 	});
-
-	return res;
 }
 
 function getLatLon(exifdata) {
