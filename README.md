@@ -1,7 +1,5 @@
 # LazyPres
 
-This is WIP.
-
 You can find this project deployed [here.](https://zemiret.github.io/lazypres/)
 
 ## What and why?
