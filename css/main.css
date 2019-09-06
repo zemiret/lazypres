@@ -25,9 +25,9 @@ h1 {
 	justify-items: center;
 	align-items: center;
 	box-shadow: 0 2px 4px #338000;
-	padding-bottom: var(--gap);
+	padding-bottom: var(--gap); 
 	padding-left: var(--gap);
-	margin-bottom: var(--gap);
+/*	margin-bottom: var(--gap); */
 }
 
 .header > h1 {
@@ -47,7 +47,7 @@ h1 {
 
 #map {
 	grid-area: sidemap;
-	margin-left: var(--gap);
+/*	margin-left: var(--gap); */
 }
 
 #img-container {
@@ -63,12 +63,6 @@ h1 {
 	background-color: #2a2a2a;
 
 	position: relative;
-}
-
-#img-container img {
-	object-fit: cover;
-	width: 100%;
-	height: auto;
 }
 
 #prev-btn {
